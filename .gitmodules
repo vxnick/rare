@@ -1,0 +1,3 @@
+[submodule "sitecmd"]
+	path = sitecmd
+	url = git@github.com:vxnick/sitecmd.git

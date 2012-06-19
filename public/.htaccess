@@ -1,0 +1,21 @@
+Options +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Change '/sitecmd/' to the directory containing sitecmd's index.php file.
+    # Use '/' if sitecmd is located within your public_html (or similar) directory.
+    RewriteBase /
+
+    # Uncomment the following lines if you would like to redirect all
+    # URLs from http://example.com to http://www.example.com.
+    # Replace 'example.com' with the domain you are using with sitecmd.
+    # You can also swap these around if you want to do it the other way.
+    #RewriteCond %{HTTP_HOST} ^example.com [NC]
+    #RewriteRule .* http://www.example.com/$0 [R=301,L]
+
+    # Sitecmd routing rules.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule .* index.php/$0 [PT]
+</IfModule>
