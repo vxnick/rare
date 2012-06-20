@@ -19,8 +19,6 @@ Priorities and statuses need to be added directly to MySQL, as I'm too lazy to c
 
 Performance seems to be good at this early stage of development - Rare is handling around 1000 tasks and 2000 notes in a production environment, and search is lightning fast (and actually quite accurate).
 
-Rare has initially been tagged as v0.1.0. This means things are subject to change and can be considered beta-quality (but suitable for real-world use).
-
 ## Features
 
 Rare is designed to be basic - it's for people who don't want to deal with a multitude of meta-data such as due dates, progress percentages and so on. Rare is also in the very early stages of development, so has a limited number of features at present.
