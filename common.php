@@ -108,6 +108,10 @@ function mail_notify($task, $action = null) {
 
 	// Send each email individually
 	foreach ($notify as $email => $name) {
+		// Ignore empty email addresses
+		if (empty($email)) {
+			continue;
+		}
 		$mail->clearRecipients();
 		$mail->addRecipient($email, $name);
 		$mail->send();
