@@ -1,6 +1,6 @@
 <?php
 
-sitecmd::set('rare.version', '0.1.0');
+sitecmd::set('rare.version', '0.1.1');
 
 $db = sitecmd::get('rare.db');
 
