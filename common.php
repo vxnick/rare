@@ -27,9 +27,13 @@ function mail_notify($task, $action = null) {
 
 	switch ($action) {
 		case 'note-added':
-			// Get the task creator (not assignee)
+			// Get the task creator
 			$creator = $task->createUser();
 			$notify[$creator->getEmail()] = $creator->getName();
+
+			// Get the task assignee
+			$assignee = new User($task->getAssignedTo());
+			$notify[$assignee->getEmail()] = $assignee->getName();
 
 			// Find everyone who is involved with this task
 			$notes = $task->buildNotes();
