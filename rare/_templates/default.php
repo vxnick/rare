@@ -8,8 +8,8 @@
 <body>
 	<div id="nav">
 		<ul>
-			<li<?php echo ((!sitecmd::get('url.request') && !sitecmd::get('url.query')) ? ' class="sel"' : '') ?>><a href="/">All Tasks</a></li>
 			<li<?php echo (strpos(sitecmd::get('url.query'), 'filter') === 0 ? ' class="sel"' : '') ?>><a href="/?filter=<?php echo fSession::get('user_id') ?>">My Tasks</a></li>
+			<li<?php echo ((!sitecmd::get('url.request') && !sitecmd::get('url.query')) ? ' class="sel"' : '') ?>><a href="/">All Tasks</a></li>
 			<li<?php echo (sitecmd::get('url.request') == 'new' ? ' class="sel"' : '') ?>><a href="/new/">New Task</a></li>
 		</ul>
 
