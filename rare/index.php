@@ -7,14 +7,21 @@ require_once '_orm/status.php';
 
 sitecmd::set('page.title', 'Tasks');
 
-$filter_clause = fRequest::get('filter') ? 'assigned_to=' : 'assigned_to!=';
-$filter_id = fRequest::get('filter', 'integer', fSession::get('user_id'));
+$where = array();
 
-$where_clause = fRequest::get('q') ? 'subject|content|notes.content~' : 'statuses.is_closed=';
-$where_value = fRequest::get('q') ? fRequest::get('q') : 0;
+// Add search to the 'where' clause
+if (fRequest::get('q')) {
+	$where['subject|content|notes.content~'] = fRequest::get('q');
+} else {
+	// Handle task assignment
+	$tasks_where = fRequest::get('filter') ? 'assigned_to=' : 'assigned_to!=';
+	$where[$tasks_where] = fRequest::get('filter', 'integer', fSession::get('user_id'));
 
-$tasks = fRecordSet::build('Task',
-	array($where_clause => $where_value, $filter_clause => $filter_id),
+	// Only show tasks that have an 'open' status
+	$where['statuses.is_closed='] = 0;
+}
+
+$tasks = fRecordSet::build('Task', $where,
 	array('priorities.order' => 'asc', 'created_at' => 'desc'));
 
 require sitecmd::get('rare.tpl').'list.php';
