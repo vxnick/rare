@@ -6,10 +6,15 @@ Rare has [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) built
 
 ## Installation
 
-1. Ensure the _public_ directory is web-accessible and that Apache has `mod_rewrite` enabled. If you're not using Apache, convert the rewrite rules as appropriate or see how sitecmd gets on without (it should work).
-2. Go through _config.php_ and change the `rare` settings at the bottom of the file, and others as necessary if sitecmd is unable to determine specific values.
-3. Import _rare.sql_ into your database and create as many users as needed.
-4. It's a good idea to setup `htpasswd` protection for Rare, as user authentication is not yet implemented. You will need to map the `htpasswd` usernames to those in the _users_ table in your database.
+1. If you've cloned Rare, run `git submodule update --init --recursive`
+2. Ensure the _public_ directory is web-accessible and that Apache has `mod_rewrite` enabled. If you're not using Apache, convert the rewrite rules as appropriate or see how sitecmd gets on without (it should work).
+3. Go through _config.php_ and change the `rare` settings at the bottom of the file, and others as necessary if sitecmd is unable to determine specific values.
+4. Import _rare.sql_ into your database and create as many users as needed.
+5. It's a good idea to setup `htpasswd` protection for Rare, as user authentication is not yet implemented. You will need to map the `htpasswd` usernames to those in the _users_ table in your database.
+
+## Upgrading
+
+1. If a file named _rare-upgrade-{version}.sql_ exists (where _{version}_ matches the version you're upgrading to), import this into your database to upgrade any tables/columns/etc. If you have missed prior upgrades, be sure to run any previous version upgrade files in the relevant order.
 
 ## Notes
 
