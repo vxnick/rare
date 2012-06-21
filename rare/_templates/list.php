@@ -27,7 +27,7 @@
 	<tr>
 		<td><?php echo $task->getId() ?></td>
 		<td><?php echo $assignee_name ?></td>
-		<td><a href="/task/<?php echo $task->getId() ?>"><?php echo $task->encodeSubject() ?></a></td>
+		<td><a href="<?php echo sitecmd::url('task/'.$task->getId().(fRequest::get('q') ? '?highlight='.fRequest::get('q') : '')) ?>"><?php echo $task->encodeSubject() ?></a></td>
 		<td><span class="button"<?php echo ($priority->getColour() ? ' style="background-color:#'.$priority->getColour().'"' : '') ?>>
 			<?php echo $priority->encodeName() ?>
 		</span></td>

@@ -1,17 +1,21 @@
 $(document).ready(function() {
     $('tr').click(function() {
         var href = $(this).find("a").attr("href");
-        if(href) {
+        if(href)
+        {
             window.location = href;
         }
     });
-
-	$(document).ready(function()
-    {
-        $(".tablesorter").tablesorter();
-    }
-);
+    $(".tablesorter").tablesorter();
+    //Splits the query into words and highlights them
+    if($.urlParam("highlight")!=null){var words=$.urlParam("highlight");$.each(words.split("%20"),function(a,b){$("div.content").highlight(b)})}
 });
+
+//URL Param fetcher
+$.urlParam=function(a){var b=new RegExp("[\\?&]"+a+"=([^&#]*)").exec(window.location.href);if(b==null){return null}else{return b[1]||0}};
+
+//jQuery Highlighter ~ http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html
+jQuery.fn.highlight=function(b){function a(e,j){var l=0;if(e.nodeType==3){var k=e.data.toUpperCase().indexOf(j);if(k>=0){var h=document.createElement("span");h.className="highlight";var f=e.splitText(k);var c=f.splitText(j.length);var d=f.cloneNode(true);h.appendChild(d);f.parentNode.replaceChild(h,f);l=1}}else{if(e.nodeType==1&&e.childNodes&&!/(script|style)/i.test(e.tagName)){for(var g=0;g<e.childNodes.length;++g){g+=a(e.childNodes[g],j)}}}return l}return this.each(function(){a(this,b.toUpperCase())})};jQuery.fn.removeHighlight=function(){return this.find("span.highlight").each(function(){this.parentNode.firstChild.nodeName;with(this.parentNode){replaceChild(this.firstChild,this);normalize()}}).end()};
 
 //Table Sorter  2.0 jQuery Plugin by Christian Bach http://tablesorter.com/docs/
 (function($){$.extend({tablesorter:new
