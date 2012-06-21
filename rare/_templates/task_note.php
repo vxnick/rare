@@ -35,6 +35,15 @@ if (fRequest::get('action') == 'edit') {
 							sitecmd::get('rare.default.status'))) ?>
 			<?php endforeach ?>
 		</select>
+
+	<label>Assignee:</label>
+		<select name="assigned_to">
+			<?php foreach ($users as $user): ?>
+				<?php fHTML::printOption($user->getName(), $user->getId(),
+					isset($task) ? $task->getAssignedTo() :
+						sitecmd::get('rare.default.assignee')) ?>
+			<?php endforeach ?>
+		</select>
 	<?php endif ?>
 	<textarea name="content" cols="80" rows="10"><?php echo $form_content ?></textarea><br />
 	<input type="submit" name="submit" value="Save Note" />

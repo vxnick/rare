@@ -43,6 +43,13 @@ try {
 				try {
 					$task->setPriorityId(fRequest::get('priority_id'));
 					$task->setStatusId(fRequest::get('status_id'));
+
+					// Change assignee?
+					if (fRequest::get('assigned_to') != $task->getAssignedTo()) {
+						$task->setAssignedTo(fRequest::get('assigned_to'));
+						mail_notify($task, 'task-assigned');
+					}
+
 					$task->store();
 
 					if (fRequest::get('content')) {
