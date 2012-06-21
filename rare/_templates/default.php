@@ -25,8 +25,7 @@
 	<div id="footer">
 		<a href="https://github.com/vxnick/rare">Rare Task Management</a>
 		&ndash; v<?php echo sitecmd::get('rare.version') ?>.
-		Chewed up and spat out in a measly <?php echo sitecmd::get('sitecmd.timer') ?> seconds.
-		Template by <a href="http://www.tempo.co.uk/">Tempo</a>
+		Design by <a href="http://www.tempo.co.uk/">Tempo</a>
 	</div>
 </body>
 </html>
